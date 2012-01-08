@@ -17,7 +17,15 @@ var spaceThings = [
         name:'Asteroid Belt',
         distance:40,
         run:function(el) {
-            
+            el.style.height = '900px';
+            el.style.width = "100%";
+            var pos = 0;
+            el.style.backgroundPosition = pos+"px 0px";
+            el.style.backgroundImage = 'url(spacestuff/asteroids.png)';
+            setInterval(function(){
+                pos += 2;
+                el.style.backgroundPosition = pos+"px 0px";
+            }, 50);
         }
     },
     {
