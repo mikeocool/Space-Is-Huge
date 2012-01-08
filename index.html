@@ -42,6 +42,7 @@
                 		spaceDiv.height(spaceSize);
                 		spaceTransition.css('top',spaceSize);
                     }
+                    
                     totalSpaceSize = Math.max(0, totalSpaceSize + delta);
 
                     if(totalSpaceSize > 0) {
@@ -62,7 +63,9 @@
                 document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
             }
             addEventListener(window, 'resize', function(e){
-                spaceDiv.width($('body').outerWidth(true));
+            	spaceWidth = $('body').outerWidth(true);
+                spaceDiv.width(spaceWidth);
+                spaceTransition.width(spaceWidth);
             });
 
             var spaceDiv = $('<div id="hugespace"></div>').css({
