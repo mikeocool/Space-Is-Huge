@@ -6,6 +6,7 @@
     <title>Space Is Huge</title> 
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+    <script type="text/javascript" src="spacestuff.js"></script>
     <script type="text/javascript">
         var SpaceIsHuge = function() {
             function mouseWheel(e) {
@@ -17,9 +18,9 @@
                 }
                 
                 if(delta > 0 && window.pageYOffset <= 0) {
-                    
+                    spaceSize = spaceDiv.height() + delta;
                     spaceSpacer.height(spaceSpacer.height() + delta);
-                    spaceDiv.height(spaceDiv.height() + delta);
+                    spaceDiv.height(spaceSize);
 
                 }
             }
@@ -39,9 +40,19 @@
                                             'height':0,
                                             'background-image':'url(space.gif)',
                                             'background-position':'bottom center'}).prependTo('body');
+
             var spaceSpacer = $('<div id="spacer"></div>').css({
                 'height':0
             }).prependTo('body');
+
+            var scale = 120;
+            for(var i = 0; i < spaceThings.length; i++) {
+                $('<img src="'+spaceThings[i].img+'">').appendTo(spaceDiv).css({
+                    position:'absolute',
+                    left:'50%',
+                    bottom:(scale * spaceThings[i].distance)
+                });
+            }
             
         }
         $(document).ready(function(){
