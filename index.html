@@ -9,6 +9,19 @@
     <script type="text/javascript" src="spacestuff.js"></script>
     <script type="text/javascript">
         var SpaceIsHuge = function() {
+
+            var addEventListener = function(elem, type, eventHandle) {
+                if (elem == null || elem == undefined) return;
+                if ( elem.addEventListener ) {
+                    elem.addEventListener( type, eventHandle, false );
+                } else if ( elem.attachEvent ) {
+                    elem.attachEvent( "on" + type, eventHandle );
+                } else {
+                    elem["on"+type]=eventHandle;
+                }
+            };
+
+
             function mouseWheel(e) {
                 var delta = 0;
                 if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
@@ -31,6 +44,11 @@
             } else {
                 document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
             }
+            addEventListener(window, 'resize', function(e){
+                console.log(e);
+                spaceDiv.width($('body').outerWidth(true));
+            });
+
             var spaceDiv = $('<div id="hugespace"></div>').css({
                                             'position':'absolute',
                                             'top':0,
