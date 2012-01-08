@@ -9,6 +9,7 @@
     <script type="text/javascript" src="spacestuff.js"></script>
     <script type="text/javascript">
         var SpaceIsHuge = function() {
+            var totalSpaceSize = 0;
 
             var addEventListener = function(elem, type, eventHandle) {
                 if (elem == null || elem == undefined) return;
@@ -23,25 +24,35 @@
 
 
             function mouseWheel(e) {
+                var evt = window.event || e;
+
                 var delta = 0;
                 if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
-                    delta = e.wheelDelta / 4;
+                    delta = evt.wheelDelta / 4;
                 } else {
-                    delta = -e.detail * 5;
+                    delta = -evt.detail * 5;
                 }
                 
-                
-                
-                if (spaceSpacer.height() >= 0){
-                	if (spaceTransition.height() < 500) {
-                    	spaceTransition.height(Math.min(spaceTransition.height() + delta, 500));
+                if(window.pageYOffset <= 0) {
+                    console.log(totalSpaceSize);
+                	if(totalSpaceSize < 500) {
+                    	spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 500));
                     } else {
-                    	spaceSize = spaceDiv.height() + delta;
+                        spaceSize = Math.max(spaceDiv.height() + delta, 0);
                 		spaceSpacer.height(spaceSize);
                 		spaceDiv.height(spaceSize);
                 		spaceTransition.css('top',spaceSize);
                     }
-                	
+                    totalSpaceSize = Math.max(0, totalSpaceSize + delta);
+
+                    if(totalSpaceSize > 0) {
+                        //stop actual scrolling while you're in space
+                        if (evt.preventDefault) {
+                            evt.preventDefault();
+                        } else {
+                            return false
+                        }
+                    }
                 }
             }
 
