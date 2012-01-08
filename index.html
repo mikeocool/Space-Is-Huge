@@ -34,7 +34,7 @@
                 
                 if (spaceSpacer.height() >= 0){
                 	if (spaceTransition.height() < 500) {
-                    	spaceTransition.height(spaceTransition.height() + delta);
+                    	spaceTransition.height(Math.min(spaceTransition.height() + delta, 500));
                     }
                     else {
                     	spaceSize = spaceDiv.height() + delta;

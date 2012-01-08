@@ -19,7 +19,7 @@ var spaceThings = [
         run:function(el) {
             
         }
-    }
+    },
     {
         name:'Jupiter',
         distance:80,
