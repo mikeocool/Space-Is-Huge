@@ -1,0 +1,92 @@
+<!doctype html> 
+<head> 
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+ 
+    <title>Space Is Huge</title> 
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+    <script type="text/javascript">
+        var SpaceIsHuge = function() {
+            function mouseWheel(e) {
+                var delta = 0;
+                if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
+                    delta = e.wheelDelta / 4;
+                } else {
+                    delta = -e.detail * 5;
+                }
+                
+                if(delta > 0 && window.pageYOffset <= 0) {
+                    
+                    spaceSpacer.height(spaceSpacer.height() + delta);
+                    spaceDiv.height(spaceDiv.height() + delta);
+
+                }
+            }
+
+            
+            if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
+                document.addEventListener('mousewheel', mouseWheel, false); // Chrome/Safari
+            } else {
+                document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
+            }
+            var spaceDiv = $('<div id="hugespace"></div>').css({
+                                            'position':'absolute',
+                                            'top':0,
+                                            'left':0,
+                                            'overflow':'hidden',
+                                            'width':$('body').outerWidth(true),
+                                            'height':0,
+                                            'background-image':'url(space.gif)',
+                                            'background-position':'bottom center'}).prependTo('body');
+            var spaceSpacer = $('<div id="spacer"></div>').css({
+                'height':0
+            }).prependTo('body');
+            
+        }
+        $(document).ready(function(){
+           SpaceIsHuge(); 
+        });
+
+    </script>
+</head> 
+<body> 
+    Hi hi hi
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body> 
+</html> 
