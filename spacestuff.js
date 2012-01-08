@@ -7,11 +7,18 @@ var spaceThings = [
         img:'spacestuff/moon.png'
     },
     {
-        name:'Moon',
+        name:'Mars',
         distance:20,
         width:640,
         height:524,
         img:'spacestuff/mars.png'
+    },
+    {
+        name:'Asteroid Belt',
+        distance:40,
+        run:function(el) {
+            
+        }
     },
     {
         name:'Jupiter',
