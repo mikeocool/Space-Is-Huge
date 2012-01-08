@@ -4,14 +4,14 @@ var spaceThings = [
         distance:5,
         width:220,
         height:220,
-        img:'spacestuff/moon.jpg'
+        img:'spacestuff/moon.png'
     },
     {
         name:'Mars',
         distance:20,
         width:640,
         height:524,
-        img:'spacestuff/mars.jpg'
+        img:'spacestuff/mars.png'
     },
     {
         name:'Asteroid Belt',
@@ -25,27 +25,27 @@ var spaceThings = [
         distance:80,
         width:640,
         height:524,
-        img:'spacestuff/jupiter.jpg'
+        img:'spacestuff/jupiter.png'
     },
     {
         name:'Saturn',
         distance:100,
         width:640,
         height:395,
-        img:'spacestuff/saturn.jpg'
+        img:'spacestuff/saturn.png'
     },
     {
         name:'Uranus',
         distance:150,
         width:970,
         height:1000,
-        img:'spacestuff/uranus.jpg'
+        img:'spacestuff/uranus.png'
     },
     {
         name:'Neptune',
         distance:180,
         width:600,
         height:588,
-        img:'spacestuff/neptune.jpg'
+        img:'spacestuff/neptune.png'
     }
 ];
