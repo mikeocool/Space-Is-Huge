@@ -30,11 +30,19 @@
                     delta = -e.detail * 5;
                 }
                 
-                if(delta > 0 && window.pageYOffset <= 0) {
-                    spaceSize = spaceDiv.height() + delta;
-                    spaceSpacer.height(spaceSpacer.height() + delta);
-                    spaceDiv.height(spaceSize);
-
+                
+                
+                if (spaceSpacer.height() >= 0){
+                	if (spaceTransition.height() < 500) {
+                    	spaceTransition.height(spaceTransition.height() + delta);
+                    }
+                    else {
+                    	spaceSize = spaceDiv.height() + delta;
+                		spaceSpacer.height(spaceSize);
+                		spaceDiv.height(spaceSize);
+                		spaceTransition.css('top',spaceSize);
+                    }
+                	
                 }
             }
 
@@ -61,6 +69,17 @@
             var spaceSpacer = $('<div id="spacer"></div>').css({
                 'height':0
             }).prependTo('body');
+
+			var spaceTransition = $('<div id="blastoff"></div>').css({
+        		'position': 'absolute',
+        		'top': 0,
+        		'left': 0,
+        		'height': 0,
+        		'overflow': 'hidden',
+        		'width': $('body').outerWidth(true),
+        		'background-image': 'url(atmosphere.png)',
+				'background-position': 'bottom center',
+        	}).prependTo('body');
 
             var scale = 120;
             for(var i = 0; i < spaceThings.length; i++) {
