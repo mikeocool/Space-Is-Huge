@@ -45,7 +45,6 @@
                 document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
             }
             addEventListener(window, 'resize', function(e){
-                console.log(e);
                 spaceDiv.width($('body').outerWidth(true));
             });
 
@@ -65,13 +64,23 @@
 
             var scale = 120;
             for(var i = 0; i < spaceThings.length; i++) {
-                var el = document.createElement('img');
-                el.src = spaceThings[i].img;
+                var el = null;
+                if(spaceThings[i].img) {
+                    el = document.createElement('img');
+                    el.src = spaceThings[i].img;
+                    el.style.left = '50%';
+                    el.style.marginLeft = (-(spaceThings[i].width / 2)) + 'px';
+                } else {
+                    el = document.createElement('div');
+                    el.style.position = 'absolute';
+                }
                 el.style.position = 'absolute';
-                el.style.left = '50%';
                 el.style.bottom = (scale * spaceThings[i].distance) + 'px';
-                el.style.marginLeft = (-(spaceThings[i].width / 2)) + 'px';
                 spaceDiv.get(0).appendChild(el);
+
+                if(spaceThings[i].run) {
+                    spaceThings[i].run(el);
+                }
             }
             
         }
