@@ -47,11 +47,13 @@
 
             var scale = 120;
             for(var i = 0; i < spaceThings.length; i++) {
-                $('<img src="'+spaceThings[i].img+'">').appendTo(spaceDiv).css({
-                    position:'absolute',
-                    left:'50%',
-                    bottom:(scale * spaceThings[i].distance)
-                });
+                var el = document.createElement('img');
+                el.src = spaceThings[i].img;
+                el.style.position = 'absolute';
+                el.style.left = '50%';
+                el.style.bottom = (scale * spaceThings[i].distance) + 'px';
+                el.style.marginLeft = (-(spaceThings[i].width / 2)) + 'px';
+                spaceDiv.get(0).appendChild(el);
             }
             
         }
