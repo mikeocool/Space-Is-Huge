@@ -34,8 +34,8 @@
                 }
                 
                 if(window.pageYOffset <= 0) {
-                	if(totalSpaceSize < 500) {
-                    	spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 500));
+                	if(totalSpaceSize < 1000) {
+                    	spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 1000));
                     } else {
                         spaceSize = Math.max(spaceDiv.height() + delta, 0);
                 		spaceSpacer.height(spaceSize);
@@ -89,7 +89,7 @@
         		'height': 0,
         		'overflow': 'hidden',
         		'width': $('body').outerWidth(true),
-        		'background-image': 'url(atmosphere.png)',
+        		'background-image': 'url(atmosphere_tall.png)',
 				'background-position': 'bottom center',
         	}).prependTo('body');
 
