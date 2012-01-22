@@ -1,4 +1,3 @@
-
 var SpaceIsHuge = function() {
     var totalSpaceSize = 0;
 
@@ -44,15 +43,33 @@ var SpaceIsHuge = function() {
                     return false
                 }
             }
+
+            updateCounter();
         }
     }
 
+    function updateCounter() {
+        var uas = Math.round((totalSpaceSize / 10000.0) * 1000.0) / 1000.0;
+        var text = String(uas);
+        if(text.length < 5) {
+            text += '0';
+        }
+        text += ' UA';
+        counterDiv.innerHTML = text;
+    }
     
     if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
         document.addEventListener('mousewheel', mouseWheel, false); // Chrome/Safari
     } else {
         document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
     }
+
+    /*function scroll(e) {
+        var evt = window.event || e;
+        console.log(window.pageYOffset);
+    }*/
+    addEventListener(window, 'scroll', scroll);
+
     addEventListener(window, 'resize', function(e){
         spaceWidth = $('body').outerWidth(true);
         spaceDiv.width(spaceWidth);
@@ -83,7 +100,19 @@ var SpaceIsHuge = function() {
         'background-image': 'url(atmosphere_tall.png)',
         'background-position': 'bottom center',
     }).prependTo('body');
+    
+    //draw space counter
+    var counterDiv = document.createElement('div');
+    spaceDiv.get(0).appendChild(counterDiv);
+    counterDiv.style.position = 'fixed';
+    counterDiv.style.right = '10px';
+    counterDiv.style.top = '10px';
+    counterDiv.style.borderWidth = '1px';
+    counterDiv.style.borderColor = '#fff';
+    counterDiv.style.padding = '5px';
+    counterDiv.style.color = '#fff';
 
+    //draw space things
     var scale = 120;
     for(var i = 0; i < spaceThings.length; i++) {
         var el = null;
