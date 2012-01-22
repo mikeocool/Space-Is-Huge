@@ -26,11 +26,13 @@ var SpaceIsHuge = function() {
         if(window.pageYOffset <= 0) {
             if(totalSpaceSize < 1000) {
                 spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 1000));
+                counterDiv.style.display = 'none';
             } else {
                 spaceSize = Math.max(spaceDiv.height() + delta, 0);
                 spaceSpacer.height(spaceSize);
                 spaceDiv.height(spaceSize);
                 spaceTransition.css('top',spaceSize);
+                counterDiv.style.display = 'block';
             }
             
             totalSpaceSize = Math.max(0, totalSpaceSize + delta);
@@ -111,6 +113,7 @@ var SpaceIsHuge = function() {
     counterDiv.style.borderColor = '#fff';
     counterDiv.style.padding = '5px';
     counterDiv.style.color = '#fff';
+    counterDiv.style.display = 'none';
 
     //draw space things
     var scale = 100000;
