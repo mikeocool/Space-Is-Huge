@@ -1,4 +1,5 @@
 var SpaceIsHuge = function() {
+    var transition = SpaceIsHuge.transition; 
     var totalSpaceSize = 0;
 
     var addEventListener = function(elem, type, eventHandle) {
@@ -24,7 +25,7 @@ var SpaceIsHuge = function() {
         }
         
         if(window.pageYOffset <= 0) {
-            if(totalSpaceSize < 1000) {
+            if(transition && totalSpaceSize < 1000) {
                 spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 1000));
                 counterDiv.style.display = 'none';
             } else {
@@ -138,6 +139,8 @@ var SpaceIsHuge = function() {
     }
     
 }
+SpaceIsHuge.transition = false;
+
 $(document).ready(function(){
    SpaceIsHuge(); 
 });
