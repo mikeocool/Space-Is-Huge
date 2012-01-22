@@ -49,12 +49,12 @@ var SpaceIsHuge = function() {
     }
 
     function updateCounter() {
-        var uas = Math.round((totalSpaceSize / 10000.0) * 1000.0) / 1000.0;
+        var uas = Math.round((totalSpaceSize / 100000.0) * 1000.0) / 1000.0;
         var text = String(uas);
-        if(text.length < 5) {
+        while(text.length < 5) {
             text += '0';
         }
-        text += ' UA';
+        text += ' AU';
         counterDiv.innerHTML = text;
     }
     
@@ -113,7 +113,7 @@ var SpaceIsHuge = function() {
     counterDiv.style.color = '#fff';
 
     //draw space things
-    var scale = 120;
+    var scale = 100000;
     for(var i = 0; i < spaceThings.length; i++) {
         var el = null;
         if(spaceThings[i].img) {
