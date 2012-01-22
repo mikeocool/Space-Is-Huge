@@ -7,157 +7,32 @@
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
     <script type="text/javascript" src="spacestuff.js"></script>
-    <script type="text/javascript">
-        var SpaceIsHuge = function() {
-            var totalSpaceSize = 0;
-
-            var addEventListener = function(elem, type, eventHandle) {
-                if (elem == null || elem == undefined) return;
-                if ( elem.addEventListener ) {
-                    elem.addEventListener( type, eventHandle, false );
-                } else if ( elem.attachEvent ) {
-                    elem.attachEvent( "on" + type, eventHandle );
-                } else {
-                    elem["on"+type]=eventHandle;
-                }
-            };
-
-
-            function mouseWheel(e) {
-                var evt = window.event || e;
-
-                var delta = 0;
-                if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
-                    delta = evt.wheelDelta / 4;
-                } else {
-                    delta = -evt.detail * 5;
-                }
-                
-                if(window.pageYOffset <= 0) {
-                	if(totalSpaceSize < 1000) {
-                    	spaceTransition.height(Math.min(Math.max(spaceTransition.height() + delta, 0), 1000));
-                    } else {
-                        spaceSize = Math.max(spaceDiv.height() + delta, 0);
-                		spaceSpacer.height(spaceSize);
-                		spaceDiv.height(spaceSize);
-                		spaceTransition.css('top',spaceSize);
-                    }
-                    
-                    totalSpaceSize = Math.max(0, totalSpaceSize + delta);
-
-                    if(totalSpaceSize > 0) {
-                        //stop actual scrolling while you're in space
-                        if (evt.preventDefault) {
-                            evt.preventDefault();
-                        } else {
-                            return false
-                        }
-                    }
-                }
-            }
-
-            
-            if (navigator.userAgent.toLowerCase().indexOf('webkit') >= 0) {
-                document.addEventListener('mousewheel', mouseWheel, false); // Chrome/Safari
-            } else {
-                document.body.addEventListener('DOMMouseScroll', mouseWheel, false); // Others
-            }
-            addEventListener(window, 'resize', function(e){
-            	spaceWidth = $('body').outerWidth(true);
-                spaceDiv.width(spaceWidth);
-                spaceTransition.width(spaceWidth);
-            });
-
-            var spaceDiv = $('<div id="hugespace"></div>').css({
-                                            'position':'absolute',
-                                            'top':0,
-                                            'left':0,
-                                            'overflow':'hidden',
-                                            'width':$('body').outerWidth(true),
-                                            'height':0,
-                                            'background-image':'url(spacestuff/universe.jpg)',
-                                            'background-position':'bottom center'}).prependTo('body');
-
-            var spaceSpacer = $('<div id="spacer"></div>').css({
-                'height':0
-            }).prependTo('body');
-
-			var spaceTransition = $('<div id="blastoff"></div>').css({
-        		'position': 'absolute',
-        		'top': 0,
-        		'left': 0,
-        		'height': 0,
-        		'overflow': 'hidden',
-        		'width': $('body').outerWidth(true),
-        		'background-image': 'url(atmosphere_tall.png)',
-				'background-position': 'bottom center',
-        	}).prependTo('body');
-
-            var scale = 120;
-            for(var i = 0; i < spaceThings.length; i++) {
-                var el = null;
-                if(spaceThings[i].img) {
-                    el = document.createElement('img');
-                    el.src = spaceThings[i].img;
-                    el.style.left = '50%';
-                    el.style.marginLeft = (-(spaceThings[i].width / 2)) + 'px';
-                } else {
-                    el = document.createElement('div');
-                    el.style.position = 'absolute';
-                }
-                el.style.position = 'absolute';
-                el.style.bottom = (scale * spaceThings[i].distance) + 'px';
-                spaceDiv.get(0).appendChild(el);
-
-                if(spaceThings[i].run) {
-                    spaceThings[i].run(el);
-                }
-            }
-            
-        }
-        $(document).ready(function(){
-           SpaceIsHuge(); 
-        });
-
-    </script>
+    <script type="text/javascript" src="space.js"></script>
+    <link href="css/scaffolding.css" rel="stylesheet">
+    <style type="text/css">
+    	body { background: #000; }
+    	h1 { font-size:150px; text-align: center; }
+    	.earth {
+    		width: 1000px;
+    		height: 1000px;
+    		-webkit-border-radius: 500px;
+			-moz-border-radius: 500px;
+			border-radius: 500px;
+			background: #666;
+			margin: auto;
+		}
+		
+    </style>
 </head> 
-<body> 
-    Hi hi hi
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<body>
+	<div class="group">
+		<div class="scrollblock">
+			<h1>Space Is Huge</h1>
+		    <div class="earth"></div>
+		</div>
+		
+		<br><br><br><br>
+		
+	</div>
 </body> 
 </html> 
