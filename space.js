@@ -69,7 +69,7 @@ var SpaceIsHuge = function() {
         var current = totalSpaceSize - (lastPosition * scale);
         var au = (spaceThings[nextThingIdx].realDistance - lastAu) * (current/duration) + lastAu; 
         au = Math.round(au * 1000.0) / 1000.0;
-        text = au + ' AU';
+        text = au.toFixed(3) + ' AU';
         counterDiv.innerHTML = text;
     }
     
