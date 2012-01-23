@@ -27,7 +27,29 @@
     		height: 479px;
 			background: url(img/earth.png) center top no-repeat;
 			margin: auto;
+			position: relative;
 		}
+		.earth .launch {
+			position: absolute;
+			bottom: 0;
+			padding: 60px 0;
+		}
+		.launch p {
+			color: #5b6c91;
+			line-height: 17px;
+		} 
+		.launch p strong { color: #fff; }
+		
+		.launch .code {
+			border: 1px solid #5b6c91;
+			background: #000;
+			color: #5b6c91;
+			height: 30px;
+			font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+			outline: none;
+		}
+		.launch iframe { margin-left: 50px !important; }
+		
 		#github {
 			display: block;
 			position: absolute;
@@ -56,7 +78,29 @@
 	<div id="container">	
 		<div id="title">
 			<h1>Space Is Huge</h1>
-		    <div class="earth"></div>
+		    <div class="earth">
+		    	<div class="container">
+		    		<div class="launch">
+		    			<div class="row">
+		    				<div class="span1">
+		    					<a href="#"><img src="img/icon-info.png" alt="About Space is Huge" width="35" height="35" border="0"></a>
+		    				</div>
+		    				<div class="span8">
+		    					<p><strong>Space is Huge</strong> is a javascript plugin that adds the beauty of infinite space to any webpage. Copy this code and paste into the head of your site.</p>
+		    				</div>
+		    				
+		    				<div class="span4">
+		    					<input class="code span5" type="text" value='<script src="http://spaceishuge.com/space.js"></script>'>
+		    				</div>
+		    				
+		    				<div class="span3">
+		    					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://spaceishuge.com" data-via="spaceishuge" data-related="spaceishuge">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
 		</div>
 		
 		<!--<a id="github" href="https://github.com/mikeocool/Space-Is-Huge"><img src="img/github-ribbon.png" alt="Fork me on Github" width="141" height="141" border="0"></a>-->
