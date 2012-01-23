@@ -1,6 +1,8 @@
 var SpaceIsHuge = function() {
     var transition = SpaceIsHuge.transition; 
     var totalSpaceSize = 0;
+    var speed = 0;
+    var auScale = 0;
 
     var addEventListener = function(elem, type, eventHandle) {
         if (elem == null || elem == undefined) return;
@@ -36,6 +38,11 @@ var SpaceIsHuge = function() {
                 counterDiv.style.display = 'block';
             }
             
+            while(spaceThings.length > nextThingIdx && (spaceThings[nextThingIdx].position * scale) > totalSpaceSize && (spaceThings[nextThingIdx].position * scale) <= (totalSpaceSize + delta)) {
+                console.log(spaceThings[nextThingIdx].name);
+                nextThingIdx++;
+            }
+
             totalSpaceSize = Math.max(0, totalSpaceSize + delta);
 
             if(totalSpaceSize > 0) {
@@ -52,12 +59,17 @@ var SpaceIsHuge = function() {
     }
 
     function updateCounter() {
-        var uas = Math.round((totalSpaceSize / 100000.0) * 1000.0) / 1000.0;
-        var text = String(uas);
-        while(text.length < 5) {
-            text += '0';
+        var lastAu = 0;
+        var lastPosition = 0;
+        if(nextThingIdx > 0) {
+            var lastPosition = spaceThings[nextThingIdx-1].position;
+            var lastAu = spaceThings[nextThingIdx-1].realDistance;
         }
-        text += ' AU';
+        var duration = ((spaceThings[nextThingIdx].position - lastPosition)  * scale); 
+        var current = totalSpaceSize - (lastPosition * scale);
+        var au = (spaceThings[nextThingIdx].realDistance - lastAu) * (current/duration) + lastAu; 
+        au = Math.round(au * 1000.0) / 1000.0;
+        text = au + ' AU';
         counterDiv.innerHTML = text;
     }
     
@@ -117,7 +129,8 @@ var SpaceIsHuge = function() {
     counterDiv.style.display = 'none';
 
     //draw space things
-    var scale = 100000;
+    var scale = 10;
+    var nextThingIdx = 0;
     for(var i = 0; i < spaceThings.length; i++) {
         var el = null;
         if(spaceThings[i].img) {
@@ -130,7 +143,7 @@ var SpaceIsHuge = function() {
             el.style.position = 'absolute';
         }
         el.style.position = 'absolute';
-        el.style.bottom = (scale * spaceThings[i].distance) + 'px';
+        el.style.bottom = (scale * spaceThings[i].position) + 'px';
         spaceDiv.get(0).appendChild(el);
 
         if(spaceThings[i].run) {
