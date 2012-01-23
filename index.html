@@ -10,31 +10,33 @@
     <script type="text/javascript" src="space.js"></script>
     <link href="css/scaffolding.css" rel="stylesheet">
     <style type="text/css">
-    	body {
-    		background: url(spacestuff/universe.jpg) top center #000;
+    	body { background: #000; }
+    	#container { width: 100%; background: url(spacestuff/universe.jpg) top center #000; }
+    	#title { padding-top: 200px; }
+    	h1 {
+    		font-size:90px;
+    		text-align: center;
+    		background: url(img/logo.png) no-repeat top left; 
+    		width: 529px; 
+    		height: 165px;
+    		text-indent: -9999px;
+    		margin: auto;
     	}
-        .group {
-            margin-top:200px;
-        }
-        h1 { 
-            font-size:90px;
-            text-align: center; 
-        }
     	.earth {
     		width: 100%;
     		height: 479px;
 			background: url(img/earth.png) center top no-repeat;
+			margin: auto;
 		}
 		
     </style>
 </head> 
 <body>
-	<div class="group">
-		<div class="scrollblock">
+	<div id="container">	
+		<div id="title">
 			<h1>Space Is Huge</h1>
 		    <div class="earth"></div>
 		</div>
-		
 	</div>
 </body>
 </html> 
